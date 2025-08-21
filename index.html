@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 NEET Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>🎯 NEET Study Planner</h1>
+            <p>Your complete study companion for NEET preparation</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="dashboard">🏠 Dashboard</button>
+            <button class="tab-btn" data-tab="profile">👤 Profile</button>
+            <button class="tab-btn" data-tab="omr-practice">⭕ OMR Practice</button>
+            <button class="tab-btn" data-tab="mistakes">📝 Mistakes</button>
+            <button class="tab-btn" data-tab="mock-tests">📊 Mock Tests</button>
+            <button class="tab-btn" data-tab="checklist">✅ Checklist</button>
+            <button class="tab-btn" data-tab="subjects">📚 Subjects</button>
+            <button class="tab-btn" data-tab="habits">🎯 Habits</button>
+            <button class="tab-btn" data-tab="timer">⏰ Timer</button>
+            <button class="tab-btn" data-tab="analytics">📈 Analytics</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="dashboard-grid">
+                    <div class="progress-overview">
+                        <h2>Overall Progress</h2>
+                        <div class="circular-progress-container">
+                            <svg class="circular-progress" viewBox="0 0 120 120">
+                                <defs>
+                                    <linearGradient id="overallGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:var(--color-primary);stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:var(--color-teal-300);stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-secondary)" stroke-width="8"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="url(#overallGradient)" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="157" stroke-linecap="round" id="overall-progress"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-number" id="overall-percentage">50%</span>
+                                <span class="progress-label">Complete</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-progress-grid">
+                        <!-- Physics Progress -->
+                        <div class="subject-card physics">
+                            <div class="subject-header">
+                                <h3>Physics</h3>
+                                <span class="subject-icon">⚡</span>
+                            </div>
+                            <div class="circular-progress-small">
+                                <svg viewBox="0 0 80 80">
+                                    <defs>
+                                        <linearGradient id="physicsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="var(--color-secondary)" stroke-width="6"/>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="url(#physicsGradient)" stroke-width="6" stroke-dasharray="220" stroke-dashoffset="132" stroke-linecap="round" id="physics-progress"/>
+                                </svg>
+                                <div class="progress-text-small">
+                                    <span id="physics-percentage">40%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chemistry Progress -->
+                        <div class="subject-card chemistry">
+                            <div class="subject-header">
+                                <h3>Chemistry</h3>
+                                <span class="subject-icon">🧪</span>
+                            </div>
+                            <div class="circular-progress-small">
+                                <svg viewBox="0 0 80 80">
+                                    <defs>
+                                        <linearGradient id="chemistryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="var(--color-secondary)" stroke-width="6"/>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="url(#chemistryGradient)" stroke-width="6" stroke-dasharray="220" stroke-dashoffset="110" stroke-linecap="round" id="chemistry-progress"/>
+                                </svg>
+                                <div class="progress-text-small">
+                                    <span id="chemistry-percentage">50%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Biology Progress -->
+                        <div class="subject-card biology">
+                            <div class="subject-header">
+                                <h3>Biology</h3>
+                                <span class="subject-icon">🧬</span>
+                            </div>
+                            <div class="circular-progress-small">
+                                <svg viewBox="0 0 80 80">
+                                    <defs>
+                                        <linearGradient id="biologyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="var(--color-secondary)" stroke-width="6"/>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="url(#biologyGradient)" stroke-width="6" stroke-dasharray="220" stroke-dashoffset="88" stroke-linecap="round" id="biology-progress"/>
+                                </svg>
+                                <div class="progress-text-small">
+                                    <span id="biology-percentage">60%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-tests">0</span>
+                            <span class="stat-label">Tests Taken</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="avg-score">0</span>
+                            <span class="stat-label">Avg Score</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-mistakes">0</span>
+                            <span class="stat-label">Mistakes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Student Profile</h2>
+                    </div>
+                    <div class="card__body">
+                        <form id="profile-form" class="profile-form">
+                            <div class="form-group">
+                                <label class="form-label" for="student-name">Full Name</label>
+                                <input type="text" id="student-name" class="form-control" placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="student-age">Age</label>
+                                <input type="number" id="student-age" class="form-control" min="15" max="25" placeholder="Enter your age">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="exam-date">NEET Exam Date</label>
+                                <input type="date" id="exam-date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="target-score">Target Score</label>
+                                <input type="number" id="target-score" class="form-control" min="300" max="720" value="650" placeholder="Target score out of 720">
+                            </div>
+                            <button type="submit" class="btn btn--primary">Save Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OMR Practice Tab -->
+            <div id="omr-practice" class="tab-content">
+                <!-- OMR Setup Section -->
+                <div id="omr-setup" class="omr-section">
+                    <div class="card">
+                        <div class="card__header">
+                            <h2>OMR Test Setup</h2>
+                            <p>Configure your practice test with subject-wise questions</p>
+                        </div>
+                        <div class="card__body">
+                            <form id="setup-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="test-name">Test Name</label>
+                                    <input type="text" id="test-name" class="form-control" placeholder="Enter test name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="test-duration">Duration (minutes)</label>
+                                    <input type="number" id="test-duration" class="form-control" min="1" max="300" value="180" required>
+                                </div>
+
+                                <div class="subject-inputs">
+                                    <h3>Number of Questions per Subject</h3>
+                                    <div class="subject-grid">
+                                        <div class="subject-input physics">
+                                            <label class="form-label" for="physics-count">⚡ Physics</label>
+                                            <input type="number" id="physics-count" class="form-control" min="0" max="50" value="0">
+                                        </div>
+                                        <div class="subject-input chemistry">
+                                            <label class="form-label" for="chemistry-count">🧪 Chemistry</label>
+                                            <input type="number" id="chemistry-count" class="form-control" min="0" max="50" value="0">
+                                        </div>
+                                        <div class="subject-input biology">
+                                            <label class="form-label" for="biology-count">🧬 Biology</label>
+                                            <input type="number" id="biology-count" class="form-control" min="0" max="50" value="10">
+                                        </div>
+                                    </div>
+                                    <div class="total-questions">
+                                        <strong>Total Questions: <span id="total-count">10</span></strong>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn--primary btn--full-width">Start OMR Test</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OMR Test Interface -->
+                <div id="omr-test" class="omr-section hidden">
+                    <div class="test-header">
+                        <div class="test-info">
+                            <h2 id="current-test-name">Test Name</h2>
+                            <div class="test-stats">
+                                <span class="timer" id="timer">3:00:00</span>
+                                <span class="progress-text">Progress: <span id="progress-count">0</span>/<span id="total-questions">0</span></span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="omr-grid" id="omr-grid">
+                        <!-- Questions will be generated here -->
+                    </div>
+
+                    <div class="test-actions">
+                        <button id="submit-test" class="btn btn--primary">Submit Test</button>
+                    </div>
+                </div>
+
+                <!-- Answer Key Input -->
+                <div id="answer-key" class="omr-section hidden">
+                    <div class="card">
+                        <div class="card__header">
+                            <h2>Enter Answer Key</h2>
+                            <p>Please provide the correct answers for all questions</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="answer-key-grid" id="answer-key-grid">
+                                <!-- Answer key inputs will be generated here -->
+                            </div>
+                            <button id="submit-answer-key" class="btn btn--primary btn--full-width">Submit Answer Key</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="results" class="omr-section hidden">
+                    <div class="results-overview">
+                        <div class="score-card">
+                            <h2>Test Results</h2>
+                            <div class="score-display">
+                                <div class="score-number" id="final-score">0</div>
+                                <div class="score-label">Total Score</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item correct">
+                                <div class="stat-number" id="correct-count">0</div>
+                                <div class="stat-label">Correct</div>
+                            </div>
+                            <div class="stat-item incorrect">
+                                <div class="stat-number" id="incorrect-count">0</div>
+                                <div class="stat-label">Incorrect</div>
+                            </div>
+                            <div class="stat-item unanswered">
+                                <div class="stat-number" id="unanswered-count">0</div>
+                                <div class="stat-label">Unanswered</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-results">
+                        <h3>Question-wise Breakdown</h3>
+                        <div class="question-breakdown" id="question-breakdown">
+                            <!-- Detailed question results will be shown here -->
+                        </div>
+                    </div>
+
+                    <div class="subject-analysis">
+                        <h3>Subject-wise Performance</h3>
+                        <div class="subject-stats" id="subject-stats">
+                            <!-- Subject performance will be shown here -->
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="view-improvement" class="btn btn--secondary">View Mistakes</button>
+                        <button id="start-new-test" class="btn btn--primary">Start New Test</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistakes Tab (Improvement Section) -->
+            <div id="mistakes" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Improvement Tracker</h2>
+                        <p>Review your mistakes and track your progress</p>
+                    </div>
+                    <div class="card__body">
+                        <div class="improvement-filters">
+                            <select id="subject-filter" class="form-control">
+                                <option value="">All Subjects</option>
+                                <option value="physics">Physics</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="biology">Biology</option>
+                            </select>
+                        </div>
+
+                        <div class="mistakes-list" id="mistakes-list">
+                            <div class="empty-state">No mistakes recorded yet. Take some tests to track your progress!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mock Tests Tab -->
+            <div id="mock-tests" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Mock Test History</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="mock-tests-list" id="mock-tests-list">
+                            <div class="empty-state">No mock tests taken yet. Use OMR Practice to create your first test!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checklist Tab -->
+            <div id="checklist" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Study Checklist</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="checklist-container">
+                            <div class="checklist-section">
+                                <h3>Physics Topics</h3>
+                                <div class="checklist-items" data-subject="physics">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Mechanics</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Thermodynamics</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Electromagnetism</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checklist-section">
+                                <h3>Chemistry Topics</h3>
+                                <div class="checklist-items" data-subject="chemistry">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Organic Chemistry</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Inorganic Chemistry</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Physical Chemistry</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checklist-section">
+                                <h3>Biology Topics</h3>
+                                <div class="checklist-items" data-subject="biology">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Botany</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Zoology</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" class="checklist-checkbox">
+                                        <span>Human Physiology</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subjects Tab -->
+            <div id="subjects" class="tab-content">
+                <div class="subjects-grid">
+                    <div class="subject-card-detailed physics">
+                        <div class="subject-header">
+                            <h2>⚡ Physics</h2>
+                            <span class="subject-progress-text">40% Complete</span>
+                        </div>
+                        <div class="subject-content">
+                            <p>Master the fundamentals of physics for NEET</p>
+                            <div class="subject-topics">
+                                <span class="topic-tag">Mechanics</span>
+                                <span class="topic-tag">Optics</span>
+                                <span class="topic-tag">Electricity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card-detailed chemistry">
+                        <div class="subject-header">
+                            <h2>🧪 Chemistry</h2>
+                            <span class="subject-progress-text">50% Complete</span>
+                        </div>
+                        <div class="subject-content">
+                            <p>Explore organic, inorganic, and physical chemistry</p>
+                            <div class="subject-topics">
+                                <span class="topic-tag">Organic</span>
+                                <span class="topic-tag">Inorganic</span>
+                                <span class="topic-tag">Physical</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card-detailed biology">
+                        <div class="subject-header">
+                            <h2>🧬 Biology</h2>
+                            <span class="subject-progress-text">60% Complete</span>
+                        </div>
+                        <div class="subject-content">
+                            <p>Study life sciences with botany and zoology</p>
+                            <div class="subject-topics">
+                                <span class="topic-tag">Botany</span>
+                                <span class="topic-tag">Zoology</span>
+                                <span class="topic-tag">Genetics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habits Tab -->
+            <div id="habits" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Study Habits Tracker</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="habits-container">
+                            <div class="habit-item">
+                                <div class="habit-info">
+                                    <h3>Daily Study</h3>
+                                    <p>Study for at least 6 hours daily</p>
+                                </div>
+                                <div class="habit-tracker">
+                                    <div class="habit-days">
+                                        <span class="day-circle completed" title="Monday">M</span>
+                                        <span class="day-circle completed" title="Tuesday">T</span>
+                                        <span class="day-circle completed" title="Wednesday">W</span>
+                                        <span class="day-circle" title="Thursday">T</span>
+                                        <span class="day-circle" title="Friday">F</span>
+                                        <span class="day-circle" title="Saturday">S</span>
+                                        <span class="day-circle" title="Sunday">S</span>
+                                    </div>
+                                    <span class="habit-streak">3 day streak</span>
+                                </div>
+                            </div>
+
+                            <div class="habit-item">
+                                <div class="habit-info">
+                                    <h3>Mock Tests</h3>
+                                    <p>Take weekly mock tests</p>
+                                </div>
+                                <div class="habit-tracker">
+                                    <div class="habit-days">
+                                        <span class="day-circle completed" title="Week 1">1</span>
+                                        <span class="day-circle completed" title="Week 2">2</span>
+                                        <span class="day-circle" title="Week 3">3</span>
+                                        <span class="day-circle" title="Week 4">4</span>
+                                    </div>
+                                    <span class="habit-streak">2 week streak</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timer Tab -->
+            <div id="timer" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Study Timer</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="timer-container">
+                            <div class="pomodoro-timer">
+                                <div class="timer-display">
+                                    <span id="study-timer">25:00</span>
+                                </div>
+                                <div class="timer-controls">
+                                    <button id="timer-start" class="btn btn--primary">Start</button>
+                                    <button id="timer-pause" class="btn btn--secondary">Pause</button>
+                                    <button id="timer-reset" class="btn btn--outline">Reset</button>
+                                </div>
+                                <div class="timer-settings">
+                                    <label class="form-label">Study Duration (minutes)</label>
+                                    <input type="number" id="study-duration" class="form-control" value="25" min="1" max="60">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="analytics" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Performance Analytics</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <h3>Weekly Progress</h3>
+                                <div class="progress-chart">
+                                    <div class="chart-placeholder">
+                                        📊 Progress chart will be shown here after taking tests
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="analytics-item">
+                                <h3>Subject Performance</h3>
+                                <div class="subject-performance">
+                                    <div class="performance-item">
+                                        <span class="subject-tag physics">Physics</span>
+                                        <span class="performance-score">40%</span>
+                                    </div>
+                                    <div class="performance-item">
+                                        <span class="subject-tag chemistry">Chemistry</span>
+                                        <span class="performance-score">50%</span>
+                                    </div>
+                                    <div class="performance-item">
+                                        <span class="subject-tag biology">Biology</span>
+                                        <span class="performance-score">60%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
